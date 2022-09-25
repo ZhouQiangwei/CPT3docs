@@ -178,7 +178,7 @@ CPT3 pipeline main parameters
 +---------------------+--------------------------------------------------------------------------+
 | --MERGE_DISTANCE    | the distance limit to merge the PETs with similar mapping locations,     | 
 |                     | default: 2                                                               |
-+-----------------------+------------------------------------------------------------------------+
++---------------------+-+------------------------------------------------------------------------+
 | --SELF_LIGATION_CUFOFF| the distance threshold between self-ligation PETs and intra-chromosomal|
 |                       |inter-ligation PETs, default: 8000 for ChIA, and 1000 for HiChIP        |
 +---------------------+-+------------------------------------------------------------------------+
@@ -201,7 +201,7 @@ CPT3 pipeline main parameters
 +---------------------+-------+------------------------------------------------------------------+
 | --INPUT_ANCHOR_FILE         | a file which contains user-specified anchors for interaction     |
 |                             | calling, default: null                                           |
-+---------------------+--------------------------------------------------------------------------+
++---------------------+-------+------------------------------------------------------------------+
 | --PVALUE_CUTOFF_INTERACTION | p-value to filter false positive interactions, default: 0.5      |
 +-------------+-------+--------------------------------------------------------------------------+
 | --zipbedpe  | gzip bedpe related file, after analysis done. default: N. Y for gzip, N for not. |
@@ -214,7 +214,8 @@ CPT3 pipeline main parameters
 +-------------+-------+--------------------------------------------------------------------------+
 | --map_ambiguous     | Also mapping ambiguous reads without linker. default: N                  |
 +---------------------+--------------------------------------------------------------------------+
-| --skipmap           | Skip mapping read1 and read2, start from paired R1.sam and R2.sam, only valid in HiChIP mode now. default: N |
+| --skipmap           | Skip mapping read1 and read2, start from paired R1.sam and R2.sam, only  |
+|                     | valid in HiChIP mode now. default: N                                     |
 +---------------------+--------------------------------------------------------------------------+
 | --macs2             | macs2 path, using macs2 callpeak to detect anchor peak with alignment    | 
 |                     | file. default: N                                                         |

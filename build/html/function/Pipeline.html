@@ -462,6 +462,239 @@
 </section>
 <section id="cpt3-pipeline-main-parameters">
 <h2 id="cpt3-pipeline-main-parameters"><a class="toc-backref" href="#id2" role="doc-backlink">CPT3 pipeline main parameters</a><a class="headerlink" href="#cpt3-pipeline-main-parameters" title="Permalink to this heading">¶</a></h2>
+<table>
+<thead>
+<tr class="row-odd"><th class="head" colspan="9"><p><strong>[ Main paramaters ]</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="9"><p>System.out.println("Usage: java -jar &lt;path of ChIA_PET.jar&gt; [options]</p></td>
+</tr>
+<tr class="row-odd"><td colspan="9"><p>Necessary options:</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--fastq1</p></td>
+<td colspan="7"><p>path of read1 fastq file</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--fastq2</p></td>
+<td colspan="7"><p>path of read2 fastq file</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--autolinker</p></td>
+<td colspan="7"><p>detect linker by our program, then no need provide --linker and --mode
+paramater.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--mode</p></td>
+<td colspan="7"><p>mode of tool, 0: short read; 1: long read, need for ChIA-PET data</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--linker</p></td>
+<td colspan="7"><p>path of linker file, need for ChIA-PET mode</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--fastp</p></td>
+<td colspan="7"><p>fastp path, strong suggest for ChIA-PET data.</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--skipheader</p></td>
+<td colspan="7"><p>skip header N reads for detect linker, default 1000000.</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--linkerreads</p></td>
+<td colspan="7"><p>N reads used for detect linker, default 100000.</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--hichip</p></td>
+<td colspan="7"><p>Y(es) or N(o)[default] or O(nly print restriction site file without run
+other step), need for hichip data</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--ligation_site</p></td>
+<td colspan="7"><p>It can be the name of restriction enzyme, such as HindIII, MboI, DpnII,
+Bglii, Sau3AI, Hinf1, NlaIII, AluI or the site of enzyme digestion,
+A^AGCTT, ^GATC, ^GATC, A^GATCT, G^ANTC, CATG^, AG^CT or others.
+multipe restriction enzyme can be seperated by comma, such as
+G^ANTC,^GATC. restriction site with '^' and contains 'ATCG' without other
+character!!! if the genomic enzyme digestion file --restrictionsiteFile
+is provided, this parameter does not need to be provided. only needed for
+hichip data</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--ResRomove</p></td>
+<td colspan="7"><p>Y or N, whether remove PET in same restriction contig. default: Y</p></td>
+</tr>
+<tr class="row-odd"><td colspan="3"><p>--restrictionsiteFile</p></td>
+<td colspan="6"><p>restriction site file, can be genarated while has --ligation_site and
+without this paramater or provide restriction enzyme information with
+--ligation_site, we will automatically generate the file. only needed
+for hichip data</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--genomefile</p></td>
+<td colspan="7"><p>genome fasta file path, needed for with --ligation_site and without
+--restrictionsiteFile only needed for hichip data</p></td>
+</tr>
+<tr class="row-odd"><td colspan="3"><p>--minfragsizeMinimum</p></td>
+<td colspan="6"><p>restriction fragment length to consider, default 20</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--maxfragsize</p></td>
+<td colspan="7"><p>Maximum restriction fragment length to consider, default 1000000</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--minInsertsize</p></td>
+<td colspan="7"><p>Minimum restriction fragment skip of mapped reads to consider, default 1</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--fqmode</p></td>
+<td colspan="7"><p>single-end or paired-end (default), only required --fastq1 when
+single-end mode for ChIA-PET data</p></td>
+</tr>
+<tr class="row-odd"><td colspan="7"><p>--minimum_linker_alignment_score</p></td>
+<td colspan="2"><p>minimum alignment score, 14 default</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--GENOME_INDEX</p></td>
+<td colspan="7"><p>the path of BWA index</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--GENOME_LENGTH</p></td>
+<td colspan="7"><p>the number of base pairs in the whole genome</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--CHROM_SIZE_INFO</p></td>
+<td colspan="7"><p>the file that contains the length of each chromosome, example file is in
+ChIA-PET_Tool_V3/chrInfo, this is necessary for &gt; step 2 analysis.
+Note. please make sure chromosome name in this file is same as name in
+genome file!!!</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--CYTOBAND_DATA</p></td>
+<td colspan="7"><p>the ideogram data used to plot intra-chromosomal peaks and interactions,
+example file is in ChIA-PET_Tool_V3/chrInfo</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--SPECIES</p></td>
+<td colspan="7"><p>1: human; 2: mouse; 3: others</p></td>
+</tr>
+<tr class="row-odd"><td colspan="9"><p>Other options:</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--start_step</p></td>
+<td colspan="7"><p>start with which step, 1: linker filtering; 2: mapping to genome;
+3: removing redundancy; 4: categorization of PETs; 5: peak calling;
+6: interaction calling; 7: visualizing, default: 1</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--stop_step</p></td>
+<td colspan="7"><p>stop with which step, 1: linker filtering; 2: mapping to genome;
+3: removing redundancy; 4: categorization of PETs; 5: peak calling;
+6: interaction calling; 7: visualizing, default: 100, should be bigger
+than --start_step</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--output</p></td>
+<td colspan="7"><p>path of output, default: ChIA-PET_Tool_V3/output</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--prefix</p></td>
+<td colspan="7"><p>prefix of output files, default: out</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--minimum_tag_length</p></td>
+<td colspan="7"><p>minimum tag length, default: 18</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--maximum_tag_length</p></td>
+<td colspan="7"><p>maximum tag length, default: 1000</p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>--minSecondBestScoreDiff</p></td>
+<td colspan="4"><p>the score difference between the best-aligned and the second-best
+aligned linkers, default: 3</p></td>
+</tr>
+<tr class="row-odd"><td colspan="8"><p>--output_data_with_ambiguous_linker_info</p></td>
+<td><p>whether to print the linker-ambiguity PETs,
+0: not print; 1: print, default: 1</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--printreadID</p></td>
+<td colspan="7"><p>write read ID to bedpe file, default: N</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--printallreads</p></td>
+<td colspan="7"><p>print all reads no matter strand, default: 0[print all]; 1, only print
+valid strand reads.</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--search_all_linker</p></td>
+<td colspan="7"><p>search all linkers in reads or just search one time, default: N</p></td>
+</tr>
+<tr class="row-odd"><td><p>--thread</p></td>
+<td colspan="8"><p>the number of threads used in linker filtering and mapping to genome, default: 1</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--MAPPING_CUTOFF</p></td>
+<td colspan="7"><p>cutoff of mapping quality score for filtering out low-quality or
+multiply-mapped reads, default: 20</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--MERGE_DISTANCE</p></td>
+<td colspan="7"><p>the distance limit to merge the PETs with similar mapping locations,
+default: 2</p></td>
+</tr>
+<tr class="row-even"><td colspan="3"><p>--SELF_LIGATION_CUFOFF</p></td>
+<td colspan="6"><blockquote>
+<div><p>the distance threshold between self-ligation PETs and intra-chromosomal</p>
+</div></blockquote>
+<p>inter-ligation PETs, default: 8000 for ChIA, and 1000 for HiChIP</p>
+</td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--EXTENSION_LENGTH</p></td>
+<td colspan="7"><p>the extension length from the location of each tag, default: 500,
+1500 suggest for single-end mode</p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>--MIN_COVERAGE_FOR_PEAK</p></td>
+<td colspan="5"><p>the minimum coverage to define peak regions, default: 5</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--PEAK_MODE</p></td>
+<td colspan="7"><p>1: peak region mode, which takes all the overlapping PET regions above
+the coverage threshold as peak regions; 2: peak summit mode, which takes
+the highest coverage of overlapping regions as peak regions, default: 2</p></td>
+</tr>
+<tr class="row-even"><td colspan="6"><p>--MIN_DISTANCE_BETWEEN_PEAK</p></td>
+<td colspan="3"><p>the minimum distance between two peaks, default: 500</p></td>
+</tr>
+<tr class="row-odd"><td colspan="6"><p>--GENOME_COVERAGE_RATIO</p></td>
+<td colspan="3"><p>the estimated proportion of the genome covered by the reads,
+default: 0.8</p></td>
+</tr>
+<tr class="row-even"><td colspan="6"><p>--PVALUE_CUTOFF_PEAK</p></td>
+<td colspan="3"><p>p-value to filter peaks that are not statistically significant,
+default: 0.00001</p></td>
+</tr>
+<tr class="row-odd"><td colspan="6"><p>--INPUT_ANCHOR_FILE</p></td>
+<td colspan="3"><p>a file which contains user-specified anchors for interaction
+calling, default: null</p></td>
+</tr>
+<tr class="row-even"><td colspan="9"><p>--PVALUE_CUTOFF_INTERACTION | p-value to filter false positive interactions, default: 0.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>--zipbedpe</p></td>
+<td colspan="8"><p>gzip bedpe related file, after analysis done. default: N. Y for gzip, N for not.</p></td>
+</tr>
+<tr class="row-even"><td><p>--zipsam</p></td>
+<td colspan="8"><p>Convert sam file to bam, after analysis done. default: N</p></td>
+</tr>
+<tr class="row-odd"><td><p>--deletesam</p></td>
+<td colspan="8"><p>Delete sam files. default: N</p></td>
+</tr>
+<tr class="row-even"><td><p>--keeptemp</p></td>
+<td colspan="8"><p>Keep temp sam and bedpe file. default: N</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--map_ambiguous</p></td>
+<td colspan="7"><p>Also mapping ambiguous reads without linker. default: N</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--skipmap</p></td>
+<td colspan="7"><p>Skip mapping read1 and read2, start from paired R1.sam and R2.sam, only
+valid in HiChIP mode now. default: N</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--macs2</p></td>
+<td colspan="7"><p>macs2 path, using macs2 callpeak to detect anchor peak with alignment
+file. default: N</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--nomodel</p></td>
+<td colspan="7"><p>macs2 parameter, Whether or not to build the shifting model in macs2.
+default: N</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--shortestP</p></td>
+<td colspan="7"><p>extend and keep shorest peak length longer than N for loop calling,
+suggest 1500, user can set 0 to skip this step. default: 1500</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--shortestA</p></td>
+<td colspan="7"><p>extend and keep shorest anchor length longer than N for loop calling,
+user can set 0 to skip this step. default: 0</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p>--XOR_cluster</p></td>
+<td colspan="7"><p>Whether keep loops if only one side of anchor is overlap with peak.
+default: N</p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>--addcluster</p></td>
+<td colspan="7"><p>Keep all regions with more than 2 count reads as potential anchor for
+calling loop. default: N. if peaks number of macs2 smaller than 10000,
+this paramater will work automaticly.</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="output-files">
 <h2 id="output-files"><a class="toc-backref" href="#id3" role="doc-backlink">Output files</a><a class="headerlink" href="#output-files" title="Permalink to this heading">¶</a></h2>

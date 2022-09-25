@@ -50,6 +50,10 @@ exclude_patterns = []
 #html_theme = 'alabaster'
 #html_theme = 'sphinx_rtd_theme'
 #import sphinx_material
+import sphinx_material
+extensions.append("sphinx_material")
+html_theme_path = sphinx_material.html_theme_path()
+html_context = sphinx_material.get_html_context()
 html_theme = 'sphinx_material'
 #import sphinx_book_theme
 #html_theme = 'sphinx_book_theme'
