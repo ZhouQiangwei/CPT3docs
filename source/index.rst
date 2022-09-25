@@ -1,0 +1,73 @@
+.. CPT3 documentation master file, created by
+   sphinx-quickstart on Thu Sep 25 21:24:25 2020.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+ChIA-PET V3 Tool: ChIA-PET, HiChIP and PLAC-Seq data analysis tool
+==================================================================
+
+.. image:: media/BatMeth2-pipeline.jpg
+
+Chromatin Interaction Analysis with Paired-End Tag (ChIA-PET) sequencing is a technology to study genome-wide long-range chromatin interactions bound by protein factors. ChIA-PET Tool V3, a software package for automatic processing of ChIA-PET sequence data, including:
+
+1. linker filtering for ChIA-PET and BL-HiChIP data
+2. mapping the paired-end reads to a reference genome
+3. purifying the mapped reads
+4. dividing the reads into different categories
+5. peak calling
+6. interaction/loop calling
+7. visualizing the results
+
+**Installation**
+
+* Please download and install the tools (see :doc:`function/install`)
+
+The functions you can use CPT3 to do:
+
+* :doc:`function/Linkerfilter`: linker filtering for ChIA-PET and BL-HiChIP data
+* :doc:`function/Alignment`: Align paired-end reads
+* :doc:`function/PETdivide`: dividing the reads into different categories
+* :doc:`function/peakcall`: peak calling with MACS2
+* :doc:`function/loopcall`: interaction/loop calling 
+* :doc:`function/visulization`: visualizing the results and report a html 
+
+
+Contents
+--------
+.. toctree::
+   :maxdepth: 1
+
+   function/install
+   function/example
+   function/bdindex
+   function/Pipeline
+   function/Linkerfilter
+   function/Alignment
+   function/PETdivide
+   function/peakcall
+   function/loopcall
+   function/visulization
+   
+While developing CPT3, we continuously strive to create software
+that fulfills the following criteria:
+
+-  raw fastq/fastq.gz reads quality control with or without linker filter and **efficiently alignment**
+-  **dividing the PETs into different categories** for ChIA-PET or HiChIP data.
+-  **calling peaks** with MACS2 or SPP methods.
+-  efficiently **calling loops**
+-  generation of **highly customizable visulization** 
+
+
+Citation
+^^^^^^^^
+
+Please cite CPT3 as follows:
+
+cite
+Li G, Sun T, Chang H, Cai L, Hong P, Zhou Q. Chromatin Interaction Analysis with Updated ChIA-PET Tool (V3). Genes (Basel). 2019 Jul 22;10(7):554. doi: 10.3390/genes10070554. PMID: 31336684; PMCID: PMC6678675
+https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6678675/
+
+
+
+.. tip:: For feature requests or bug reports please open an issue `on github <https://github.com/GuoliangLi-HZAU/ChIA-PET_Tool_V3>`__.
+
